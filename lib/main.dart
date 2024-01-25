@@ -37,7 +37,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int index = 0;
+  int index = 1;
 
   bool showGraphTileAlgorithms = false;
 
