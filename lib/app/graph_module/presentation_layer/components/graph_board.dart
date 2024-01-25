@@ -12,8 +12,22 @@ import '../controller/graph_board_bloc.dart';
 import '../controller/graph_board_state.dart';
 import '../screens/graph_painter.dart';
 
-Map<String, Offset> nodePositions = {};
-Map<String , Offset> lastOffset = {};
+Map<String, Offset> nodePositions = {
+  '1':Offset(42.4, 125.6),
+  '2':Offset(39.2, 469.6) ,
+  '3':Offset(320.8, 296.0),
+  '4':Offset(307.2, 114.0) ,
+  '5':Offset(133.2, 369.6),
+  '6':Offset(285.6, 456.0),
+};
+Map<String , Offset> lastOffset = {
+  '1':Offset(42.4, 125.6),
+  '2':Offset(39.2, 469.6) ,
+  '3':Offset(320.8, 296.0),
+  '4':Offset(307.2, 114.0) ,
+  '5':Offset(133.2, 369.6),
+  '6':Offset(285.6, 456.0),
+};
 List<String>path= [];
 class GraphBoard extends StatefulWidget {
   const GraphBoard({Key? key}) : super(key: key);
@@ -30,6 +44,10 @@ class _GraphBoardState extends State<GraphBoard> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
+
+    nodePositions.forEach((key, value) {
+      print("$key is $value");
+    });
 
     if (nodePositions.isNotEmpty && lastOffset.isNotEmpty) {
       nodePositions.forEach((key, value) {

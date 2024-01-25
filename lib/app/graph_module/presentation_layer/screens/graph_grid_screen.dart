@@ -37,7 +37,7 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
     for (Pair<int, int> cell in path) {
       int index = cell.first * width + cell.second;
 
-      await Future.delayed(const Duration(milliseconds: 600), () {
+      await Future.delayed(const Duration(milliseconds: 50), () {
         setState(() {
           selectedCells[index] = 4;
         });
@@ -102,11 +102,6 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
     for (int i = 0; i < numRows; i++) {
       result.add(flatList.sublist(i * numCols, (i + 1) * numCols));
     }
-
-    for (int i = 0; i < 10; i++) {
-      print(result[i]);
-    }
-    print("_____________________________________");
 
     return result;
   }
@@ -192,17 +187,17 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 height: screenSize.height * .4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
                       onPressed: () async {
+                        removeYellowColor() ;
                         try {
                           List<Pair<int, int>> res = GraphAlgorithms()
                               .findPathUsing2dDfs(selectedCells);
-
                           await changeColorWithDelay(res);
                         } catch (e) {
                           toastification.show(
@@ -230,7 +225,9 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                       ),
                     ),
                     ElevatedButton(
+
                       onPressed: () async {
+                        removeYellowColor();
                         try {
                           List<Pair<int, int>> res = GraphAlgorithms()
                               .findPathUsing2dBfs(selectedCells);
@@ -300,7 +297,7 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                       width: cellWidth,
                       height: cellHeight,
                       color: getColorCell(index),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           '',
                           style: TextStyle(

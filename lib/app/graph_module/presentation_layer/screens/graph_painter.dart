@@ -28,11 +28,18 @@ class GraphPainter extends CustomPainter {
         for (var pair in pairs) {
           if (pair.first != 'none') {
             if (!nodePositions.containsKey(pair.first)) {
-              Offset childPosition =
-                  nodePositions[pair.first] ?? generateRandomPosition();
-              while (nodePositions.containsValue(childPosition)) {
+              Offset childPosition = nodePositions[pair.first] ?? generateRandomPosition();
+
+              // Limit the distance between parent and child nodes to a maximum of 400 pixels
+              double distance = sqrt(pow(childPosition.dx - nodePositions[key]!.dx, 2) +
+                  pow(childPosition.dy - nodePositions[key]!.dy, 2));
+
+              while (nodePositions.containsValue(childPosition) || distance > 400) {
                 childPosition = generateRandomPosition();
+                distance = sqrt(pow(childPosition.dx - nodePositions[key]!.dx, 2) +
+                    pow(childPosition.dy - nodePositions[key]!.dy, 2));
               }
+
               nodePositions[pair.first] = childPosition;
             }
           }
