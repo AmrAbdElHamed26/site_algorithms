@@ -13,6 +13,7 @@ import '../controller/graph_board_state.dart';
 import '../screens/graph_painter.dart';
 
 Map<String, Offset> nodePositions = {};
+Map<String , Offset> lastOffset = {};
 List<String>path= [];
 class GraphBoard extends StatefulWidget {
   const GraphBoard({Key? key}) : super(key: key);
@@ -29,8 +30,33 @@ class _GraphBoardState extends State<GraphBoard> {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
+
+    if (nodePositions.isNotEmpty && lastOffset.isNotEmpty) {
+      nodePositions.forEach((key, value) {
+        var dxDiff = screenWidth - lastOffset[key]!.dx;
+        var dyDiff = screenHeight - lastOffset[key]!.dy;
+
+        if (value.dx + (dxDiff) >= 33 &&
+            value.dx + (dxDiff) <= 1042 &&
+            value.dy + (dyDiff) >= 37&&
+            value.dy + (dyDiff) <= 530) {
+          nodePositions[key] = Offset(value.dx + (dxDiff), value.dy + (dyDiff));
+        }
+
+      });
+
+
+    }
+
+
     return BlocBuilder<GraphBoardBloc, GraphBoardState>(
       builder: (context, state) {
+       if(nodePositions.isNotEmpty){
+         nodePositions.forEach((key, value) {
+           lastOffset.addAll({key: Offset(screenWidth, screenHeight)});
+         });
+       }
+
         return Padding(
           padding: const EdgeInsets.only(top:30),
           child: Column(
