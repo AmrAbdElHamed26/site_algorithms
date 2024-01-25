@@ -37,7 +37,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int index = 1 ;
+  int index = 0 ;
   bool showGraphTileAlgorithms = false;
   @override
   Widget build(BuildContext context) {
