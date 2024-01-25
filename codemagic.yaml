@@ -1,0 +1,7 @@
+triggering:
+  events:
+    - pull_request
+  branch_patterns:
+    - pattern: 'main'
+      include: true
+      source: true
