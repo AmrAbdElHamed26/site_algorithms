@@ -14,6 +14,7 @@ class GraphBoardBloc extends Bloc<GraphBoardEvent, GraphBoardState> {
 
       var result = addNewNodeUseCase.execute(event.nodes);
 
+      // comment
       emit(state.copyWith(
         allNodes: result,
       ));
