@@ -5,7 +5,7 @@ Welcome to **Site Algorithms**, a Flutter web project designed to visualize vari
 ## Video Demonstration
 
 
-[![Site Algorithms Demo]](https://www.youtube.com/watch?v=ltM2uGrzJhs&ab_channel=AmrAbdelhamed)
+[![Site Algorithms Demo](https://www.youtube.com/watch?v=ltM2uGrzJhs&ab_channel=AmrAbdelhamed)](https://www.youtube.com/watch?v=ltM2uGrzJhs&ab_channel=AmrAbdelhamed)
 
 ## Features
 
