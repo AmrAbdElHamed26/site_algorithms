@@ -38,12 +38,30 @@ class GraphBoard extends StatefulWidget {
 
 class _GraphBoardState extends State<GraphBoard> {
   bool isMouseHoveredOnDFSButton = false;
+  bool firstTime = true;
 
 @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
+
+    if(firstTime){
+      nodePositions['1'] = Offset(screenWidth*.1, screenHeight*.2);
+      nodePositions['2'] = Offset(screenWidth*.05, screenHeight*.65);
+      nodePositions['3'] = Offset(screenWidth*.3, screenHeight*.35);
+      nodePositions['4'] = Offset(screenWidth*.3, screenHeight*.2);
+      nodePositions['5'] = Offset(screenWidth*.15, screenHeight*.5);
+      nodePositions['6'] =  Offset(screenWidth*.3, screenHeight*.65);
+
+      lastOffset['1'] = Offset(screenWidth*.1, screenHeight*.2);
+      lastOffset['2'] = Offset(screenWidth*.05, screenHeight*.65);
+      lastOffset['3'] = Offset(screenWidth*.3, screenHeight*.35);
+      lastOffset['4'] = Offset(screenWidth*.3, screenHeight*.2);
+      lastOffset['5'] = Offset(screenWidth*.15, screenHeight*.5);
+      lastOffset['6'] =  Offset(screenWidth*.3, screenHeight*.65);
+      firstTime = false ;
+    }
 
     nodePositions.forEach((key, value) {
       print("$key is $value");
