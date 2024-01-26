@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
-      home: MainScreen(),
+      home: Scaffold(body: Container(width: double.infinity,height: double.infinity, color: Colors.red,),),
     );
   }
 }
