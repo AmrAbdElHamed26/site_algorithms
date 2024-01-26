@@ -2,6 +2,10 @@
 
 Welcome to **Site Algorithms**, a Flutter web project designed to visualize various algorithms. This project leverages the power of Flutter web for creating interactive and engaging algorithm visualizations. The primary aim of Site Algorithms is to make algorithms more accessible and understandable through visual representation.
 
+### Explore interactive algorithm visualizations on Site Algorithms.
+
+[**Try Site Algorithms**](https://site_algorithms.codemagic.app/)
+
 ## Video Demonstration
 
 
