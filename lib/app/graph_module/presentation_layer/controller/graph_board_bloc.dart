@@ -16,7 +16,6 @@ class GraphBoardBloc extends Bloc<GraphBoardEvent, GraphBoardState> {
 
       emit(state.copyWith(
         allNodes: result,
-        //allNodesState: RequestState.loaded,
       ));
     });
   }
