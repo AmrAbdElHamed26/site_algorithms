@@ -130,6 +130,15 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                     ElevatedButton(
                       onPressed: () {
                         handleButtonPress('Start');
+                        toastification.show(
+                          context: context,
+                          title: const Text("Select Source Node "),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateColor.resolveWith(
@@ -149,6 +158,15 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                     ElevatedButton(
                       onPressed: () {
                         handleButtonPress('End');
+                        toastification.show(
+                          context: context,
+                          title: const Text("Select Destination Node "),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateColor.resolveWith(
@@ -168,6 +186,15 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                     ElevatedButton(
                       onPressed: () {
                         handleButtonPress('Blocks');
+                        toastification.show(
+                          context: context,
+                          title: const Text("Select Block Nodes "),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateColor.resolveWith(
@@ -194,6 +221,15 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
+                        toastification.show(
+                          context: context,
+                          title: const Text("Start DFS Algorithm"),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                         removeYellowColor() ;
                         try {
                           List<Pair<int, int>> res = GraphAlgorithms()
@@ -227,6 +263,15 @@ class _GraphGridScreenState extends State<GraphGridScreen> {
                     ElevatedButton(
 
                       onPressed: () async {
+                        toastification.show(
+                          context: context,
+                          title: const Text("Start BFS Algorithm"),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                         removeYellowColor();
                         try {
                           List<Pair<int, int>> res = GraphAlgorithms()

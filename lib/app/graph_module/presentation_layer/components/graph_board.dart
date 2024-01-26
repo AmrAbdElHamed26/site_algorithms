@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toastification/toastification.dart';
 
 import '../../../../core/algorithms/graph_algorithms/graph_algorithms.dart';
 import '../../../../core/components/box_comonent.dart';
@@ -87,7 +88,8 @@ class _GraphBoardState extends State<GraphBoard> {
 
     return BlocBuilder<GraphBoardBloc, GraphBoardState>(
       builder: (context, state) {
-       if(nodePositions.isNotEmpty){
+
+        if(nodePositions.isNotEmpty){
          nodePositions.forEach((key, value) {
            lastOffset.addAll({key: Offset(screenWidth, screenHeight)});
          });
@@ -98,30 +100,35 @@ class _GraphBoardState extends State<GraphBoard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BoxComponent(
-                screenHeight: screenSize.height * .75,
-                screenWidth: screenSize.width * .7,
-                color: Colors.black,
-                child: GestureDetector(
-                  onPanUpdate: (details) {
-                    if (details.localPosition.dx >= 33 &&
-                        details.localPosition.dx <= 1042 &&
-                        details.localPosition.dy >= 37&&
-                        details.localPosition.dy <= 530) {
-                      setState(() {
-                        updateNodePosition(details);
-                      });
-                    }
-                  },
-                  child: CustomPaint(
-                    painter: GraphPainter(
-                      state.allNodes,
-                      screenSize.height * .75,
-                      screenSize.width * .7,
+              Stack(
+                children: [
+                  BoxComponent(
+                    screenHeight: screenSize.height * .75,
+                    screenWidth: screenSize.width * .7,
+                    color: Colors.black,
+                    child: GestureDetector(
+                      onPanUpdate: (details) {
+                        if (details.localPosition.dx >= 33 &&
+                            details.localPosition.dx <= 1042 &&
+                            details.localPosition.dy >= 37&&
+                            details.localPosition.dy <= 530) {
+                          setState(() {
+                            updateNodePosition(details);
+                          });
+                        }
+                      },
+                      child: CustomPaint(
+                        painter: GraphPainter(
+                          state.allNodes,
+                          screenSize.height * .75,
+                          screenSize.width * .7,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
 
+                  ),
+
+                ],
               ),
               /// buttons for graph
 
@@ -136,6 +143,15 @@ class _GraphBoardState extends State<GraphBoard> {
 
                     GestureDetector(
                       onTap: () {
+                        toastification.show(
+                          context: context,
+                          title: const Text("Start DFS Algorithm"),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                         path.removeRange(0,path.length);
                         List<String> tmpPath = GraphAlgorithms().findPathUsingDFS('1', state.allNodes!);
 
@@ -167,6 +183,15 @@ class _GraphBoardState extends State<GraphBoard> {
                     ),
                     GestureDetector(
                       onTap: (){
+                        toastification.show(
+                          context: context,
+                          title: const Text("Start BFS Algorithm"),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                         path.removeRange(0,path.length);
                         List<String> tmpPath = GraphAlgorithms().findPathUsingBFS('1', state.allNodes!);
 
@@ -195,7 +220,17 @@ class _GraphBoardState extends State<GraphBoard> {
                     ),
 
                     GestureDetector(
+
                       onTap: (){
+                        toastification.show(
+                          context: context,
+                          title: const Text("Start Dijkstra Algorithm"),
+                          autoCloseDuration: const Duration(seconds: 3),
+                          icon: const Icon(
+                            Icons.track_changes,
+                            color: Colors.green,
+                          ),
+                        );
                         path.removeRange(0,path.length);
                         List<String> tmpPath = GraphAlgorithms().findPathUsingDijkstra('1', state.allNodes!);
 
