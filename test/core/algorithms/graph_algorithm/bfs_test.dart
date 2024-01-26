@@ -52,9 +52,10 @@ void main() {
       ];
 
 
+
       try {
         bfs.bfs2d(grid);
-        fail('Expected No path found exception, but no exception was thrown.');
+        fail('Expected No path found exception, but no exception was thrown');
       } catch (e) {
         expect(e.toString(), equals('No path found'));
       }

@@ -103,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
                   children: [
                     GradientText(
                       'Graph Algorithms',
-                      style: TextStyle(fontWeight: FontWeight.bold), colors: [Colors.deepPurple , Colors.yellowAccent],
+                      style: const TextStyle(fontWeight: FontWeight.bold), colors: [Colors.deepPurple , Colors.yellowAccent],
                     ),
                     Icon(showGraphTileAlgorithms == false
                         ? Icons.arrow_drop_down_circle_outlined
